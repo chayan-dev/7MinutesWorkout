@@ -9,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
 import java.lang.Exception
 import java.util.*
@@ -31,6 +32,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var player:MediaPlayer?=null
 
+    private var exerciseAdapter:ExerciseStatusAdapter?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityExerciseBinding.inflate(layoutInflater)
@@ -52,6 +55,14 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         }
         setupRestView()
+        setupExerciseStatusRecyclerView()
+    }
+
+    private fun setupExerciseStatusRecyclerView(){
+        binding?.rvExerciseStatus?.layoutManager= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+
+        exerciseAdapter= ExerciseStatusAdapter(exerciseList!!)
+        binding?.rvExerciseStatus?.adapter=exerciseAdapter
     }
 
     private fun setupRestView(){
@@ -118,8 +129,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.tvTimer?.text=(10-restProgress).toString()
             }
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity,"Here now we will start the exercise",Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@ExerciseActivity,"Here now we will start the exercise",Toast.LENGTH_SHORT).show()
                 currentExercisePosition++
+
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
+
                 setupExerciseView()
 
             }
@@ -136,7 +151,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.tvTimerExercise?.text=(30-exerciseProgress).toString()
             }
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity,"30 seconds are over, lets take a rest",Toast.LENGTH_SHORT).show()
+
+                exerciseList!![currentExercisePosition].setIsSelected(false)
+                exerciseList!![currentExercisePosition].setIsCompleted(true)
+                exerciseAdapter!!.notifyDataSetChanged ()
+
+//                Toast.makeText(this@ExerciseActivity,"30 seconds are over, lets take a rest",Toast.LENGTH_SHORT).show()
                 if(currentExercisePosition<exerciseList?.size!!-1){
                     setupRestView()
                 }
