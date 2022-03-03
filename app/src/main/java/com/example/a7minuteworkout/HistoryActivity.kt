@@ -37,7 +37,7 @@ class HistoryActivity : AppCompatActivity() {
             historyDao.fetchAllDates().collect { allCompletedDatesList->
                 if(allCompletedDatesList.isNotEmpty()){
                     binding?.tvHistory?.visibility= View.VISIBLE
-                    binding?.rvHistory?.visibility=View.INVISIBLE
+                    binding?.rvHistory?.visibility=View.VISIBLE
                     binding?.tvNoDataAvailable?.visibility=View.INVISIBLE
 
                     binding?.rvHistory?.layoutManager=LinearLayoutManager(this@HistoryActivity)
