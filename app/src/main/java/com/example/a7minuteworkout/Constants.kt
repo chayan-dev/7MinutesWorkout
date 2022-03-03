@@ -8,7 +8,7 @@ object Constants {
         val jumpingJacks= ExerciseModel(
             1,
             "Jumping Jacks",
-            R.drawable.ic_jumping_jacks,
+            R.drawable.ic_jumpingjacks,
             false,
             false
         )
@@ -17,18 +17,18 @@ object Constants {
         val wallSit = ExerciseModel(2, "Wall Sit", R.drawable.ic_wall_sit, false, false)
         exerciseList.add(wallSit)
 
-        val pushUp = ExerciseModel(3, "Push Up", R.drawable.ic_push_up, false, false)
+        val pushUp = ExerciseModel(3, "Push Up", R.drawable.ic_pushup, false, false)
         exerciseList.add(pushUp)
 
         val abdominalCrunch =
-            ExerciseModel(4, "Abdominal Crunch", R.drawable.ic_abdominal_crunch, false, false)
+            ExerciseModel(4, "Abdominal Crunch", R.drawable.ic_crunches, false, false)
         exerciseList.add(abdominalCrunch)
 
         val stepUpOnChair =
             ExerciseModel(
                 5,
                 "Step-Up onto Chair",
-                R.drawable.ic_step_up_onto_chair,
+                R.drawable.ic_step_up_on_chair,
                 false,
                 false
             )
@@ -41,7 +41,7 @@ object Constants {
             ExerciseModel(
                 7,
                 "Tricep Dip On Chair",
-                R.drawable.ic_triceps_dip_on_chair,
+                R.drawable.ic_triceps_dip,
                 false,
                 false
             )
@@ -53,13 +53,13 @@ object Constants {
         val highKneesRunningInPlace =
             ExerciseModel(
                 9, "High Knees Running In Place",
-                R.drawable.ic_high_knees_running_in_place,
+                R.drawable.ic_high_knees,
                 false,
                 false
             )
         exerciseList.add(highKneesRunningInPlace)
 
-        val lunges = ExerciseModel(10, "Lunges", R.drawable.ic_lunge, false, false)
+        val lunges = ExerciseModel(10, "Lunges", R.drawable.ic_lunges, false, false)
         exerciseList.add(lunges)
 
         val pushupAndRotation =
